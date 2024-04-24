@@ -31,5 +31,13 @@ result.addEventListener('click', function () {
     resScreen.textContent = eval(val);
     
 
-    console.log(eval(screen.textContent))
+    console.log(val.slice(0, val.length-1))
+})
+
+const eraser = document.querySelector('.delete');
+
+eraser.addEventListener("click", function () {
+    const val = screen.textContent;
+    const newVal = val.slice(0, val.length - 1);
+    screen.textContent = newVal;
 })

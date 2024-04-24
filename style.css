@@ -80,3 +80,19 @@ body{
 .item.orange{
     background-color: rgba(255, 152, 0, 1);
 }
+
+.top_line{
+    justify-content: space-between;
+    margin: 5px 15px;
+}
+
+.icons{
+    width: 40px;
+    height: auto;
+    filter: invert();
+   
+}
+.icons img{
+    max-width: 100%;
+    object-fit: contain;
+}
