@@ -49,6 +49,8 @@ body{
     flex-direction: column;
     justify-content: flex-end;
     overflow-wrap: break-word;
+    position: relative;
+    z-index: 1;
 }
 
 .calc_body {
@@ -119,4 +121,31 @@ body{
     padding: 10px;
     font-size: 38px;
     margin-top: 5px;
+}
+
+.cat-animation{
+    width: 200px;
+    height: auto;
+    position: absolute;
+    z-index: 3;
+    bottom: 0;
+    animation: cat 3s 1;
+    /*animation-play-state: paused;*/
+    display: none;
+}
+
+.cat-animation.open{
+    /*animation-play-state:running;*/
+    display: block;
+   
+}
+
+@keyframes cat{
+    0%{
+        left: -50%;
+    }
+
+    100%{
+        left: 150%;
+    }
 }

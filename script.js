@@ -1,6 +1,6 @@
 const items = document.querySelectorAll(".item");
 const screen = document.querySelector('.input_section');
-const resScreen = document.querySelector('.result_section');
+const resScreen = document.querySelector('.screen-result');
 
 
 items.forEach((i) => {
@@ -14,12 +14,26 @@ items.forEach((i) => {
 
 const reset = document.querySelector("#reset");
 const result = document.querySelector("#result");
+const cat = document.querySelector('.cat-animation');
 
 reset.addEventListener('click', function () {
+    cat.classList.add('open');
+// cat.style.animationPlayState = 'running';
     screen.textContent = " ";
-    resScreen.textContent = "0"
+    setTimeout(resetScreen, 1000);
+    setTimeout(endAnimation, 3000);
+    //resScreen.textContent = "0";
+   
 });
 
+function resetScreen() {
+    resScreen.textContent = "0";
+}
+
+function endAnimation() {
+    cat.classList.remove('open');
+    //cat.style.animationPlayState = 'paused'; 
+}
 const add = document.querySelector("#add");
 
 
