@@ -1,0 +1,56 @@
+@use '../style/shared.scss';
+
+.container{
+    width: 100%;
+    max-width: 430px;
+    margin: 0 auto;
+    height: 932px;
+    display: flex;
+    flex-direction: column;
+    background-color: shared.$main-background;
+
+    .screen{
+        flex: 0 1 40%;
+    }
+
+    .panel{
+        flex: 0 1 10%;
+    }
+
+    .main{
+        flex: 0 1 50%;
+
+        .mainRow{
+            display: flex;
+            justify-content: center;
+            margin-top: 12px;
+
+            button{
+                width: 72px;
+                height: 72px;
+                border-radius: 50%;
+                display: flex;
+                justify-content: space-around;
+                align-items: center;
+                font-size: shared.$main-font-size;
+                font-weight: 500;
+                color: shared.$main-color;
+                margin: 0 12px;
+                background-color: #fff;
+                border-color: #fff;
+
+                .addButton{
+                    color: shared.$add-color;
+                    
+                }
+
+                
+            }
+
+        .equal {
+            color: #fff;
+            background-color: shared.$main-color;
+        }
+        }
+    }
+}
