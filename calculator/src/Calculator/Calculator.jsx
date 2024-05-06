@@ -1,23 +1,33 @@
 import { useState } from "react";
 import styles from "./Calculator.module.scss";
+import Numbers from "./Numbers";
 
 function Calculator() {
 
-    const [value, setValue] = useState(0);
-    function showValue() {
-        console.log(target)
-        const val = this.value;
-        setValue(val)
-    }
+    const [value, setValue] = useState("0");
+    const [result, setResult] = useState("");
+
+   
     return (
         <div>
             <div className={styles.container}>
-                <div className={styles.screen}>{value}</div>
+                <div className={styles.screen}>
+                    {value}
+                    <div className={styles.results}>
+                        {result}
+                    </div>
+                </div>
                 <div className={styles.panel}></div>
+                <div className={styles.main}>
+                    <Numbers data = {value} onClick={setValue} res={setResult} />
+                    
+                </div>
+                
+                {/* 
                 <div className={styles.main}>
                     <div className={styles.mainRow}>
                         <button><div >C</div></button>
-                        <button value={1} onClick={showValue}><div className={styles.addButton}>()</div></button>
+                        <button onClick={setValue}><div className={styles.addButton}>()</div></button>
                         <button><div className={styles.addButton}>%</div></button>
                         <button><div className={styles.addButton}>/</div></button>
                     </div>
@@ -46,6 +56,7 @@ function Calculator() {
                         <button className={styles.equal}><div >=</div></button>
                     </div>
                 </div>
+                */}
             </div>
         </div>
     )

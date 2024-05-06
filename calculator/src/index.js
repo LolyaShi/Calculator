@@ -5,10 +5,11 @@ import App from './App';
 import Calculator from './Calculator/Calculator';
 import reportWebVitals from './reportWebVitals';
 
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-    <Calculator />
+    <Calculator/>
   </React.StrictMode>
 );
 

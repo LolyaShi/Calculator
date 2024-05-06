@@ -2,42 +2,73 @@
 
 .container{
     width: 100%;
-    max-width: 430px;
+    max-width: 400px;
     margin: 0 auto;
     height: 932px;
     display: flex;
     flex-direction: column;
     background-color: shared.$main-background;
+   padding: 12px;
 
     .screen{
         flex: 0 1 40%;
+        text-align: right;
+        font-size: 70px;
+        position: relative;
+
+        .results{
+            font-size: 52px;
+            color: shared.$main-color;
+            position: absolute;
+            bottom: 20px;
+            right: 0;
+        }
     }
 
     .panel{
         flex: 0 1 10%;
+       
     }
 
     .main{
         flex: 0 1 50%;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+
+        button {
+                width: 72px;
+                height: 72px;
+                border-radius: 50%;
+               // display: flex;
+                //justify-content: space-around;
+                //align-items: center;
+                font-size: shared.$main-font-size;
+                font-weight: 500;
+                color: shared.$main-color;
+                margin: 12px;
+                background-color: #fff;
+                border-color: #fff;
+
+    
+        }
+
+        button:first-child, button:last-child{
+            width: 168px;
+            border-radius: 50px;
+            color: #fff;
+            background-color: shared.$main-color;
+        }
+
+       
+
 
         .mainRow{
             display: flex;
             justify-content: center;
             margin-top: 12px;
 
-            button{
-                width: 72px;
-                height: 72px;
-                border-radius: 50%;
-                display: flex;
-                justify-content: space-around;
-                align-items: center;
-                font-size: shared.$main-font-size;
-                font-weight: 500;
-                color: shared.$main-color;
-                margin: 0 12px;
-                background-color: #fff;
-                border-color: #fff;
 
                 .addButton{
                     color: shared.$add-color;
@@ -51,6 +82,6 @@
             color: #fff;
             background-color: shared.$main-color;
         }
-        }
+        
     }
 }
