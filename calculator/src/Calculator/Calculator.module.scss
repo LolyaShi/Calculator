@@ -15,19 +15,37 @@
         text-align: right;
         font-size: 70px;
         position: relative;
+        padding: 10px;
+        overflow-wrap: break-word;
+        display: flex;
+        flex-direction: column;
+        
+        .monitor{
+            flex: 0 0 70%;
+            overflow: scroll;
+        }
 
         .results{
+            flex: 0 0 30%;
             font-size: 52px;
             color: shared.$main-color;
-            position: absolute;
-            bottom: 20px;
-            right: 0;
+            
+            max-width: 100%;
         }
     }
 
     .panel{
         flex: 0 1 10%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0 20px;
        
+        img{
+            width: 40px;
+            height: auto;
+            
+        }
     }
 
     .main{

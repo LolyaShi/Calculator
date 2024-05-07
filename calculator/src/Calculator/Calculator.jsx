@@ -12,12 +12,22 @@ function Calculator() {
         <div>
             <div className={styles.container}>
                 <div className={styles.screen}>
-                    {value}
+                    <div className={styles.monitor}>
+                        {value}
+                    </div>
+                    
                     <div className={styles.results}>
                         {result}
                     </div>
                 </div>
-                <div className={styles.panel}></div>
+                <div className={styles.panel}>
+                    <div >
+                        <img src="./history.svg" alt="history" />
+                    </div>
+                    <div onClick={() => setValue(value.slice(0, value.length - 1))}>
+                        <img src="./delete.svg" alt="delete" />
+                    </div>
+                </div>
                 <div className={styles.main}>
                     <Numbers data = {value} onClick={setValue} res={setResult} />
                     
