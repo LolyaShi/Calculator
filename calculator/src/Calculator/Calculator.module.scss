@@ -22,7 +22,7 @@
         
         .monitor{
             flex: 0 0 70%;
-            overflow: scroll;
+            
         }
 
         .results{
@@ -54,6 +54,7 @@
         display: flex;
         align-items: center;
         justify-content: center;
+        position: relative;
 
         button {
                 width: 72px;
@@ -102,4 +103,38 @@
         }
         
     }
+}
+
+.historyBlock{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 80%;
+    height: 100%;
+    background-color: shared.$main-background;
+    color: shared.$main-color;
+    font-size: 29px;
+    padding: 0 15px;
+    overflow: scroll;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    .content{
+        flex: 1 1 auto;
+    }
+
+    div{
+        margin: 10px 0;
+
+        .clean {
+                width: 100%;
+                height: fit-content;
+                padding: 15px 5px;
+                font-size: 18px;
+                
+            }
+
+    }
+
 }

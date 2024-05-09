@@ -29,6 +29,7 @@ function Numbers(props) {
          else if (e.target.innerHTML === "=") {
             props.onClick(props.data)
             props.res(eval(props.data))
+            props.takeRes(props.data)
         }
              else if (isNaN(e.target.innerHTML)) {
                 checkExpression(e.target.innerHTML)

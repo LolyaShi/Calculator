@@ -1,12 +1,24 @@
 import { useState } from "react";
 import styles from "./Calculator.module.scss";
 import Numbers from "./Numbers";
+import History from "./CalcHistory";
 
 function Calculator() {
 
     const [value, setValue] = useState("0");
     const [result, setResult] = useState("");
+    const [history, setHistory] = useState(false);
+    const [save, setSave] = useState([]);
 
+    const takeRes = (val) => {
+        const example = `${val} = ${eval(val)}`;
+        save.push(example);
+        if (save.length > 15) {
+            save.shift();
+        }
+        setSave(save)
+    }
+    
    
     return (
         <div>
@@ -21,7 +33,9 @@ function Calculator() {
                     </div>
                 </div>
                 <div className={styles.panel}>
-                    <div >
+                    <div onClick={() => {
+                        setHistory(!history)
+                    }}>
                         <img src="./history.svg" alt="history" />
                     </div>
                     <div onClick={() => setValue(value.slice(0, value.length - 1))}>
@@ -29,8 +43,8 @@ function Calculator() {
                     </div>
                 </div>
                 <div className={styles.main}>
-                    <Numbers data = {value} onClick={setValue} res={setResult} />
-                    
+                    <Numbers data = {value} onClick={setValue} res={setResult} takeRes={takeRes} />
+                    <History status={history} item={value} saver={save} onClick={setSave} />
                 </div>
                 
                 {/* 
