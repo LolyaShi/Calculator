@@ -2,6 +2,7 @@ import { useState } from "react";
 import styles from "./Calculator.module.scss";
 import Numbers from "./Numbers";
 import History from "./CalcHistory";
+import Converter from "../Converter/Converter.jsx";
 
 function Calculator() {
 
@@ -9,6 +10,7 @@ function Calculator() {
     const [result, setResult] = useState("");
     const [history, setHistory] = useState(false);
     const [save, setSave] = useState([]);
+    const [converter, setConverter] = useState(false);
 
     const takeRes = (val) => {
         const example = `${val} = ${eval(val)}`;
@@ -23,6 +25,7 @@ function Calculator() {
     return (
         <div>
             <div className={styles.container}>
+                <Converter props = {converter} onClick={setConverter} />
                 <div className={styles.screen}>
                     <div className={styles.monitor}>
                         {value}
@@ -33,11 +36,17 @@ function Calculator() {
                     </div>
                 </div>
                 <div className={styles.panel}>
-                    <div onClick={() => {
-                        setHistory(!history)
-                    }}>
-                        <img src="./history.svg" alt="history" />
+                    <div className={styles.panelLeft}>
+                        <div onClick={() => {
+                            setHistory(!history)
+                        }}>
+                            <img src="./history.svg" alt="history" />
+                        </div>
+                        <div onClick={() => setConverter(true)}> 
+                            <img src="./converter.svg" alt="" />
+                        </div>
                     </div>
+                    
                     <div onClick={() => setValue(value.slice(0, value.length - 1))}>
                         <img src="./delete.svg" alt="delete" />
                     </div>

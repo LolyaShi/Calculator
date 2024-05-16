@@ -1,0 +1,11 @@
+[
+    {
+        "type": "weight",
+        "unit": ["kilogram", "pound", "gram", "tonne"]
+    }, 
+    {
+        "type": "time",
+        "unit":["seconds", "milliseconds", "hours", "minutes", "days"]
+    }
+    
+]
