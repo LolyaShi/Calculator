@@ -3,7 +3,31 @@ import converter from "./converter.json";
 import styles from "./Converter.module.scss";
 import TypeScreen from "./TypeScreen";
 
+async function fetchData(from, to, value) {
+    const url = "https://api.exoapi.dev/unit-converter";
+    const options =    {
+    method: "POST",
+    headers: {
+        Authorization: "Bearer 64ff3b696d5e40b29ced812a51068126-c605fb2e2a516d42fbb19978bcbaed58",
+        "Content-Type": "application/json",
+    },
+    body: JSON.stringify({ from: from, to: to, value: value }),
+    }
+    
+/*
+  .then((response) => response.json())
+    .then((result) => console.log(result))     
+        .catch((error) => console.error(error));*/
+    
+    const response = await fetch(url, options);
+    const result = await response.json();
 
+    return result.result
+    
+}
+
+
+/*
 async function getData(type, from, to, value) {
     const url = `https://unit-measurement-conversion.p.rapidapi.com/convert?type=${type}&fromUnit=${from}&toUnit=${to}&fromValue=${value}`;
     const options = {
@@ -13,36 +37,45 @@ async function getData(type, from, to, value) {
             'X-RapidAPI-Host': 'unit-measurement-conversion.p.rapidapi.com'
         }
     };
-   /* const response = await fetch(url, options);
-    const result = response.text();
+    const response = await fetch(url, options);
+    const result = await response.json();
 
-    return result*/
+    return result.value
     
-    try {
+   try {
         const response = await fetch(url, options);
-        const result = await response.text();
-        console.log(result);
-    } catch (error) {
+        const result = await response.json();
+        //console.log(result);
+        return result.value
+   }
+   catch (error) {
         console.error(error);
     }
-}
+    
+}*/
+
+
 
 function Screen({value}) {
     // const response = getData('weight', 'pound', 'kilogram', 200);
     
-    const [unit, setUnit] = useState(converter[0].unit);
-   
+    const [unit, setUnit] = useState(converter[1].unit);
+    const [label, setLabel] = useState(converter[1].label);
+    const [from, setFrom] = useState('');
 
     return (
         <div>
             <div className={styles.typePanel}>
                 {converter.map((item) => {
-                    const iType = item.unit;
-                    return <button onClick={() => (setUnit(iType))}>{item.type }</button>
+                    return <button key={item.type} onClick={() => {
+                        setUnit(item.unit);
+                        setLabel(item.label);
+                        setFrom(item.unit[0])
+                    }}>{item.type}</button>
                 })}
             </div>
             <div>
-                <TypeScreen type={unit} value={value} convert ={getData} />
+                <TypeScreen  type={unit} label={label} value={value} convert ={fetchData} from={from} setFrom={setFrom} />
             </div>
             
         </div>

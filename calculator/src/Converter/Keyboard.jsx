@@ -6,8 +6,35 @@ function Keyboard({onClick, value}) {
     })
 
     function click(e) {
+    
         if (!isNaN(e.target.innerHTML)) {
-            onClick(value + e.target.innerHTML )
+            if (value === "0") {
+                onClick(e.target.innerHTML)
+            }   
+            else {
+                onClick(value + e.target.innerHTML )
+            }
+            
+        }
+        else if(e.target.innerHTML === ".") {
+            //onClick(value + e.target.innerHTML )
+            checkExpression(e.target.innerHTML, value)
+        }
+        else if (e.target.innerHTML === "-") {
+            onClick(value*(-1))
+        }
+    }
+
+    function checkExpression(el, value) {
+        const lastNum = value[value.length - 1];
+        
+        if (isNaN(lastNum)) {
+            onClick(value);
+            console.log(isNaN(lastNum))
+        }
+        else {
+            onClick(value + el)
+            
         }
     }
 
@@ -16,11 +43,11 @@ function Keyboard({onClick, value}) {
             <div className={styles.numbers}>
                 {expr}
             </div>
-            <div className={styles.symbols}>
-                <button>
+            <div className={styles.symbols} >
+                <button onClick={() => onClick(value.slice(0, value.length - 1))}>
                     <img src="./delete.svg" alt="delete" />
                 </button>
-                <button className={styles.clean}>C</button>
+                <button className={styles.clean} onClick={()=>(onClick('0'))}>C</button>
                 <button>
                     <img src="./up.svg" alt="up" />
                 </button>

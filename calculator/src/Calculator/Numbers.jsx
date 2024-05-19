@@ -26,13 +26,19 @@ function Numbers(props) {
                 props.res("")
         }
         
-         else if (e.target.innerHTML === "=") {
-            props.onClick(props.data)
-            props.res(eval(props.data))
-            props.takeRes(props.data)
+        else if (e.target.innerHTML === "=") {
+             const lastNum = props.data[props.data.length - 1];
+        
+            if (!isNaN(lastNum)) {
+                props.onClick(props.data)
+                //props.onClick(eval(props.data))
+                props.res(eval(props.data))
+                props.takeRes(props.data)
+            }
+            
         }
              else if (isNaN(e.target.innerHTML)) {
-                checkExpression(e.target.innerHTML)
+                checkExpression(e.target.innerHTML, props.data)
                 //props.res(eval(props.data))
             }
         
@@ -40,16 +46,16 @@ function Numbers(props) {
         
     }
 
-    function checkExpression(el) {
-        const lastNum = props.data[props.data.length - 1];
-        
+    function checkExpression(el, value) {
+        const lastNum = value[value.length - 1];
+        console.log(value)
         if (isNaN(lastNum)) {
-            props.onClick(props.data);
+            props.onClick(value);
             console.log(isNaN(lastNum))
         }
         else {
-            props.onClick(props.data + el)
-            props.res(eval(props.data))
+            props.onClick(value + el)
+            props.res(eval(value))
         }
     }
 

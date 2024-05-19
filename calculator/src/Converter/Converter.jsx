@@ -5,7 +5,7 @@ import Screen from "./Screen";
 
 function Converter({ props, onClick }) {
 
-    const [value, setValue] = useState('');
+    const [value, setValue] = useState('0');
 
     if (props) {
         return (

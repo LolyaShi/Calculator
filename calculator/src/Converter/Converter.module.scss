@@ -45,6 +45,10 @@
             border: none;
             font-size: 20px;
         }
+
+        button:active {
+            background-color: #fff;
+        }
     }
 
 }
@@ -116,7 +120,7 @@
                     background: none;
                 }
             }
-            input {
+            .input {
                     width: 90%;
                     height: 100px;
                     font-size: 30px;
