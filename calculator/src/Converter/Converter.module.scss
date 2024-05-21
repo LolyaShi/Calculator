@@ -128,6 +128,22 @@
                     text-align: right;
                     border: none;
                     background: none;
+                    display: flex;
+                    justify-content: space-between;
+                    align-items: center;
+
+                    input{
+                        height: 100%;
+                        width: 100%;
+                        background: none;
+                        text-align: end;
+                        font-size: 30px;
+                        border: none;
+
+                        
+                    }
+
+                    
                 }
         }
 

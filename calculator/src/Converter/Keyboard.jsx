@@ -1,6 +1,6 @@
 import styles from "./Converter.module.scss";
 
-function Keyboard({onClick, value}) {
+function Keyboard({onClick, value, setArrow}) {
     const expr = Array.from("789456123-0.").map((ex) => {
         return <button onClick={click} key={ex} >{ex}</button>
     })
@@ -38,6 +38,8 @@ function Keyboard({onClick, value}) {
         }
     }
 
+   
+
     return (
         <div className={styles.keyboard}>
             <div className={styles.numbers}>
@@ -48,10 +50,10 @@ function Keyboard({onClick, value}) {
                     <img src="./delete.svg" alt="delete" />
                 </button>
                 <button className={styles.clean} onClick={()=>(onClick('0'))}>C</button>
-                <button>
+                <button onClick={() => (setArrow(true))}>
                     <img src="./up.svg" alt="up" />
                 </button>
-                <button>
+                <button onClick={() => (setArrow(false))}>
                     <img src="./down.svg" alt="down" />
                 </button>
             </div>

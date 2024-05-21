@@ -56,12 +56,14 @@ async function getData(type, from, to, value) {
 
 
 
-function Screen({value}) {
+function Screen({value, arrow}) {
     // const response = getData('weight', 'pound', 'kilogram', 200);
     
     const [unit, setUnit] = useState(converter[1].unit);
     const [label, setLabel] = useState(converter[1].label);
     const [from, setFrom] = useState('');
+    const [to, setTo] = useState('');
+    
 
     return (
         <div>
@@ -70,12 +72,13 @@ function Screen({value}) {
                     return <button key={item.type} onClick={() => {
                         setUnit(item.unit);
                         setLabel(item.label);
-                        setFrom(item.unit[0])
+                        setFrom(item.unit[0]);
+                        setTo(item.unit[0]);
                     }}>{item.type}</button>
                 })}
             </div>
             <div>
-                <TypeScreen  type={unit} label={label} value={value} convert ={fetchData} from={from} setFrom={setFrom} />
+                <TypeScreen  type={unit} label={label} value={value} convert ={fetchData} from={from} setFrom={setFrom} to={to} setTo={setTo} arrow={arrow} />
             </div>
             
         </div>

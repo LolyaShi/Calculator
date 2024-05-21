@@ -52,7 +52,7 @@ function Calculator() {
                     </div>
                 </div>
                 <div className={styles.main}>
-                    <Numbers data = {value} onClick={setValue} res={setResult} takeRes={takeRes} />
+                    <Numbers data = {value} onClick={setValue} result={result} res={setResult} takeRes={takeRes} />
                     <History status={history} item={value} saver={save} onClick={setSave} />
                 </div>
                 

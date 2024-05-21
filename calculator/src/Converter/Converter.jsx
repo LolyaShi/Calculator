@@ -6,6 +6,7 @@ import Screen from "./Screen";
 function Converter({ props, onClick }) {
 
     const [value, setValue] = useState('0');
+    const [arrow, setArrow] = useState(true);
 
     if (props) {
         return (
@@ -16,10 +17,10 @@ function Converter({ props, onClick }) {
                 </div>
             
                 <div className={styles.screen}>
-                    <Screen value={value} />
+                    <Screen value={value} arrow={arrow} />
                 </div>
                 <div>
-                    <Keyboard value = {value} onClick={ setValue} />
+                    <Keyboard value = {value} onClick={ setValue} setArrow={setArrow} />
                 </div>
 
             </div>

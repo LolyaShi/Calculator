@@ -3,7 +3,7 @@ import styles from "./Converter.module.scss";
 
 
 
-function TypeScreen({ type, label, value, convert, from, setFrom }) {
+function TypeScreen({ type, label, value, convert, from, setFrom, to, setTo, arrow }) {
 
    function FetchResult( from, to, value) {
         const [res, setRes] = useState('');
@@ -18,29 +18,54 @@ function TypeScreen({ type, label, value, convert, from, setFrom }) {
         })
     
     return res;
-}
+    }
 
     //const [from, setFrom] = useState(type[0]);
     const options = useRef();
-    const [to, setTo] = useState(type[0]);
     const optionTo = useRef();
+    const inp1 = useRef();
+    const inp2 = useRef()
 
-    const res = FetchResult(from, to, value);
+    useEffect(() => {
+        options.current.selectedIndex = "0";
+        optionTo.current.selectedIndex = "0";
+    }, [type])
+
+    const result = FetchResult(from, to, value);
+
+
+    useEffect(() => {
+        if (arrow) {
+            inp1.current.focus();
+
+        }
+        else {
+            inp2.current.focus();
+
+        }
+
+        console.log(arrow)
+    }, [arrow])
+    
+    
+
+    
 
 
     return (
         <div className={styles.fullscreen}>
             <div className={styles.firstScreen}>
                 <select ref={options} onChange={() => {
-                    const value = options.current.selectedIndex;
-                    setFrom(type[value])
-                }} >
+                    const index = options.current.selectedIndex;
+                    setFrom(type[index])
+                   
+                }}>
                     {label.map((u) => {
                         return <option value={u}> {u}</option>
                     })}
                 </select>
                 <div className={styles.input}>
-                    {value}
+                    <input ref={inp1} type="number" value={value}  />
                     <span>{from}</span>
                 </div>
                
@@ -55,7 +80,8 @@ function TypeScreen({ type, label, value, convert, from, setFrom }) {
                     })}
                 </select>
                 <div className={styles.input}>
-                    {res}
+                    
+                    <input ref={inp2} type="number" value={result}  />
                     <span>{to}</span>
                 </div>
                 
