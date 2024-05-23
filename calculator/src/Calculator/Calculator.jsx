@@ -12,6 +12,11 @@ function Calculator() {
     const [save, setSave] = useState([]);
     const [converter, setConverter] = useState(false);
 
+    const [theme, setTheme] = useState('light');
+    function changeTheme() {
+        setTheme((val) => (val === "light") ? "dark" : "light" )
+    }
+
     const takeRes = (val) => {
         const example = `${val} = ${eval(val)}`;
         save.push(example);
@@ -23,10 +28,18 @@ function Calculator() {
     
    
     return (
-        <div>
-            <div className={styles.container}>
-                <Converter props = {converter} onClick={setConverter} />
+        <div  >
+            <div id={theme === "light" ? styles.light : styles.dark} className={styles.container}>
+                <Converter props = {converter} onClick={setConverter} theme={theme} />
                 <div className={styles.screen}>
+                    <div className={styles.top}>
+                        Theme {theme}
+                        
+                            <label className={styles.switchBlock} htmlFor="themeBtn">
+                                <input onChange={changeTheme} id="themeBtn" type="checkbox" />
+                                < span className={styles.switch}></span>
+                            </label>  
+                    </div>
                     <div className={styles.monitor}>
                         {value}
                     </div>

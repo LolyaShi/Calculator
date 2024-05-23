@@ -3,3 +3,14 @@ $main-color: #bd5bd8;
 $add-color: #6bc9f4;
 $main-background: #f5cfffe9;
 $converter-color: rgb(240, 185, 255);
+
+@mixin theme($type){
+    @if ($type == "light"){
+        background-color: #f5cfffe9 ;
+        color: #bd5bd8 ;
+    }
+    @else if($type == "dark") {
+        background-color: #000;
+        color: #fff;
+    }
+}

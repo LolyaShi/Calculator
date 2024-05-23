@@ -1,5 +1,40 @@
 @use '../style/shared.scss';
 
+#dark{
+    @include shared.theme('dark');
+
+    img{
+        filter: invert(1);
+    }
+    .typePanel{ 
+        button{
+            color: #fff;
+            background: none;
+        }
+    }
+
+    .keyboard {
+        button{
+        background-color: #3d3535;
+        color: #fff;
+        }
+        .clean {
+            color: #ff416a;
+        }
+    }
+    
+    .screen{
+
+        input{
+            color: #fff;
+        }
+        select{
+            color: #fff;
+            background-color: #3d3535;
+        }
+    }
+}
+
 .converter {
     position: absolute;
     z-index: 3;
@@ -10,6 +45,7 @@
     background-color: shared.$converter-color;
     display: flex;
     flex-direction: column;
+    
 
     .top {
         display: flex;
@@ -26,6 +62,8 @@
     img {
         width: 40px;
         height: auto;
+        object-fit: cover;
+        cursor: pointer;
     }
 
     .typePanel {
@@ -73,6 +111,7 @@
         img{
             width: 30px;
             height: auto;
+            
         }
     }
 
@@ -85,6 +124,7 @@
     .symbols{
         display: flex;
         flex-direction: column;
+        filter:contrast(1);
 
         .clean{
             color: red;

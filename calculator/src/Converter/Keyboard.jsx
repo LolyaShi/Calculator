@@ -1,9 +1,13 @@
+import { useRef } from "react";
 import styles from "./Converter.module.scss";
 
-function Keyboard({onClick, value, setArrow}) {
+function Keyboard({onClick, value, setArrow, arrow}) {
     const expr = Array.from("789456123-0.").map((ex) => {
         return <button onClick={click} key={ex} >{ex}</button>
     })
+
+    const up = useRef();
+    const down = useRef();
 
     function click(e) {
     
@@ -50,10 +54,18 @@ function Keyboard({onClick, value, setArrow}) {
                     <img src="./delete.svg" alt="delete" />
                 </button>
                 <button className={styles.clean} onClick={()=>(onClick('0'))}>C</button>
-                <button onClick={() => (setArrow(true))}>
+                <button ref={up} onClick={() => {
+                    setArrow(true)
+                    up.current.style.filter = "contrast(.5)"
+                    down.current.style.filter = "contrast(1)"
+                 }}>
                     <img src="./up.svg" alt="up" />
                 </button>
-                <button onClick={() => (setArrow(false))}>
+                <button ref={down} onClick={() => {
+                    setArrow(false) 
+                    up.current.style.filter = "contrast(1)"
+                    down.current.style.filter = "contrast(.5)"
+                }}>
                     <img src="./down.svg" alt="down" />
                 </button>
             </div>

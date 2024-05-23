@@ -31,13 +31,13 @@ function TypeScreen({ type, label, value, convert, from, setFrom, to, setTo, arr
         optionTo.current.selectedIndex = "0";
     }, [type])
 
-    const result = FetchResult(from, to, value);
-
+    //const result = FetchResult(from, to, value);
+const result = 0
 
     useEffect(() => {
         if (arrow) {
             inp1.current.focus();
-
+        
         }
         else {
             inp2.current.focus();
