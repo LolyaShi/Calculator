@@ -31,8 +31,8 @@ function TypeScreen({ type, label, value, convert, from, setFrom, to, setTo, arr
         optionTo.current.selectedIndex = "0";
     }, [type])
 
-    //const result = FetchResult(from, to, value);
-const result = 0
+    const result = FetchResult(from, to, value);
+//const result = 0
 
     useEffect(() => {
         if (arrow) {
@@ -65,7 +65,7 @@ const result = 0
                     })}
                 </select>
                 <div className={styles.input}>
-                    <input ref={inp1} type="number" value={value}  />
+                    <input ref={inp1} type="number" value={value}/>
                     <span>{from}</span>
                 </div>
                

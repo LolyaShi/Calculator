@@ -1,4 +1,4 @@
-import { useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import converter from "./converter.json";
 import styles from "./Converter.module.scss";
 import TypeScreen from "./TypeScreen";
@@ -59,33 +59,35 @@ async function getData(type, from, to, value) {
 function Screen({value, arrow, theme}) {
     // const response = getData('weight', 'pound', 'kilogram', 200);
     
-    const [unit, setUnit] = useState(converter[1].unit);
-    const [label, setLabel] = useState(converter[1].label);
-    const [from, setFrom] = useState('');
-    const [to, setTo] = useState('');
+    const [unit, setUnit] = useState(converter[0].unit);
+    const [label, setLabel] = useState(converter[0].label);
+    const [from, setFrom] = useState(converter[0].unit[0]);
+    const [to, setTo] = useState(converter[0].unit[0]);
 
     const panel = useRef();
+
     let color = (theme === "light" ? "#fff" : "#ff416a");
+    
     
 
     return (
         <div>
-            <div ref={panel} className={styles.typePanel} onClick={(e) => {
-                panel.current.style.background = "none"
-                let btns = panel.current.children;
-                console.log(btns[0])
-                for (let el of btns) {
-                    el.style.background = "none"
-                
-                }
-                e.target.style.background = color;
-            }}>
+            <div ref={panel} className={styles.typePanel}>
                 {converter.map((item) => {
-                    return <button key={item.type} onClick={() => {
+                    return <button key={item.type} onClick={(e) => {
                         setUnit(item.unit);
                         setLabel(item.label);
                         setFrom(item.unit[0]);
                         setTo(item.unit[0]);
+
+                        panel.current.style.background = "none"
+                        let btns = panel.current.children;
+                        console.log(btns)
+                        for (let el of btns) {
+                            el.style.background = "none"
+                        
+                        }
+                        e.target.style.background = color;
                         
                     }}>{item.type}</button>
                 })}

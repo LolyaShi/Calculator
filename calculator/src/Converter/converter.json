@@ -18,6 +18,16 @@
         "type": "length",
         "unit": ["[ft_i]", "[in_i]", "[mi_i]", "[nmi_i]", "[yd_i]", "cm", "dm","km", "m", "mm"],
         "label": ["Foot", "Inch", "Mile", "Nautical mile", "Yard", "Centimetre", "Decimetre", "Kilometre", "Metre", "Millimetre"]
+    },
+     {
+        "type": "speed",
+        "unit": ["[kn_i]", "km/h", "m/s"],
+        "label": ["Knot", "Kilometre per hour", "Metre per second" ]
+    },
+     {
+        "type": "temperature",
+        "unit": ["[degF]", "Cel", "K"], 
+        "label": ["Degree Fahrenheit", "Degree Celsius", "Kelvin"]
     }
     
 ]

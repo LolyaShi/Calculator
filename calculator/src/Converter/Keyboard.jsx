@@ -34,7 +34,6 @@ function Keyboard({onClick, value, setArrow, arrow}) {
         
         if (isNaN(lastNum)) {
             onClick(value);
-            console.log(isNaN(lastNum))
         }
         else {
             onClick(value + el)

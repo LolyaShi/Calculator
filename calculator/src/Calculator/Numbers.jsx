@@ -18,7 +18,10 @@ function Numbers(props) {
             }
             else {
                 props.onClick(props.data + e.target.innerHTML)
+                props.res(eval(props.data + e.target.innerHTML))
             }
+
+            
               
         }
             else if (e.target.innerHTML === "C") {
@@ -28,12 +31,13 @@ function Numbers(props) {
         
         else if (e.target.innerHTML === "=") {
              const lastNum = props.data[props.data.length - 1];
-        
+            
             if (!isNaN(lastNum)) {
-                props.onClick(props.data)
-                //props.onClick(eval(props.data))
-                props.res(eval(props.data))
+                //props.onClick(props.data)
+                props.onClick(String(eval(props.data)))
+                props.res("")
                 props.takeRes(props.data)
+                console.log(typeof(String(props.result)))
             }
             
         }
@@ -55,7 +59,7 @@ function Numbers(props) {
         }
         else {
             props.onClick(value + el)
-            props.res(eval(value))
+            //props.res(eval(value))
         }
     }
 
